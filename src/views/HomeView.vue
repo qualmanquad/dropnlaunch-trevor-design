@@ -87,6 +87,7 @@ onMounted(() => {
   if (hudRowRef.value) hudObserver.observe(hudRowRef.value)
 
   setupReveals()
+  preloadShowcaseImages()
 
   if (!reduceMotion) {
     updateHeroParallax()
@@ -213,6 +214,14 @@ function prevScreen() {
 function nextScreen() {
   screenIndex.value = (screenIndex.value + 1) % appScreens.length
 }
+
+function preloadShowcaseImages() {
+  for (const screen of appScreens) {
+    const image = new Image()
+    image.decoding = 'async'
+    image.src = screen.image
+  }
+}
 </script>
 
 <template>
@@ -334,16 +343,19 @@ function nextScreen() {
         <div class="showcase-phone" :aria-label="`App screen: ${activeScreen.kicker}`">
           <div class="showcase-shell">
             <div class="showcase-screen">
-              <Transition name="showcase-fade" mode="out-in">
-                <img
-                  :key="screenIndex"
-                  class="showcase-image"
-                  :src="activeScreen.image"
-                  :alt="activeScreen.alt"
-                  width="1024"
-                  height="473"
-                />
-              </Transition>
+              <img
+                v-for="(screen, index) in appScreens"
+                :key="screen.kicker"
+                class="showcase-image"
+                :class="{ 'is-active': index === screenIndex }"
+                :src="screen.image"
+                :alt="index === screenIndex ? screen.alt : ''"
+                :aria-hidden="index !== screenIndex"
+                width="1024"
+                height="473"
+                decoding="async"
+                :fetchpriority="index === 0 ? 'high' : 'low'"
+              />
               <div class="showcase-island" aria-hidden="true"></div>
               <div class="showcase-home" aria-hidden="true"></div>
             </div>
@@ -863,6 +875,20 @@ function nextScreen() {
   object-fit: cover;
   object-position: center;
   display: block;
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+.showcase-image.is-active {
+  opacity: 1;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-image {
+    transition: none;
+  }
 }
 
 .showcase-island {
