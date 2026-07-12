@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#F4F7F0"/>
+  <rect x="24" y="24" width="1152" height="752" fill="#dbe8d0"/>
+  <text x="600" y="390" text-anchor="middle" fill="#5A655C" font-family="Arial,sans-serif" font-size="32" font-weight="600">Training place photo</text>
+  <text x="600" y="435" text-anchor="middle" fill="#5A655C" font-family="Arial,sans-serif" font-size="18">placeholder</text>
+</svg>
