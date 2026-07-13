@@ -1260,7 +1260,7 @@ function preloadShowcaseImages() {
   }
 
   .stats-head {
-    margin-bottom: clamp(7rem, 22vw, 10rem);
+    margin-bottom: clamp(5.25rem, 14vw, 7rem);
   }
 
   .hud-row {
@@ -1334,7 +1334,7 @@ function preloadShowcaseImages() {
   }
 
   .stats-head {
-    margin-bottom: clamp(9rem, 48vw, 14rem);
+    margin-bottom: clamp(5rem, 16vw, 6.5rem);
   }
 
   .stats-grid {
