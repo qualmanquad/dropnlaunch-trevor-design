@@ -1,10 +1,9 @@
 <script setup>
-import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { Menu, X } from '@lucide/vue'
 
 const route = useRoute()
-const router = useRouter()
 const scrolled = ref(false)
 const menuOpen = ref(false)
 const isMobileNav = ref(false)
@@ -25,25 +24,6 @@ function toggleMenu() {
 
 function closeMenu() {
   menuOpen.value = false
-}
-
-function scrollToDownload() {
-  const target = document.getElementById('download')
-  if (!target) return
-  const top = target.getBoundingClientRect().top + window.scrollY - 80
-  window.scrollTo({ top, behavior: 'smooth' })
-}
-
-async function onGetStartedClick(event) {
-  event.preventDefault()
-  closeMenu()
-
-  if (route.path !== '/') {
-    await router.push('/')
-    await nextTick()
-  }
-
-  scrollToDownload()
 }
 
 function onKeydown(event) {
@@ -144,16 +124,16 @@ onUnmounted(() => {
           :tabindex="navInteractive ? 0 : -1"
           @click="closeMenu"
         >
-          Leaderboards
+          Leaderboard
         </a>
-        <a
+        <RouterLink
           class="nav-cta"
-          href="/"
+          to="/get-started"
           :tabindex="navInteractive ? 0 : -1"
-          @click="onGetStartedClick"
+          @click="closeMenu"
         >
           Get Started
-        </a>
+        </RouterLink>
       </nav>
     </div>
   </header>

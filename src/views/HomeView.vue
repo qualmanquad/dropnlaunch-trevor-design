@@ -151,45 +151,45 @@ const places = [
     copy: 'Take real swing data wherever you train and see instant feedback after every hit.',
     image: '/assets/place-field.webp',
     alt: 'Batter on the field with Drop N Launch swing metrics overlay',
-    setupTo: '/get-started#setup-field',
   },
   {
     title: 'In Your Garage',
     copy: 'Turn a compact home setup into a powerful training space with real ball metrics and video.',
     image: '/assets/place-garage.webp',
     alt: 'Garage batting setup with projected Drop N Launch stadium',
-    setupTo: '/get-started#setup-garage',
   },
   {
     title: 'In the Cage',
     copy: 'Make cage work more productive with live data, virtual ball flight, and competitive modes.',
     image: '/assets/place-cage.webp',
     alt: 'Phone filming a batter in the cage with live Drop N Launch swing metrics on screen',
-    setupTo: '/get-started#setup-cage',
   },
 ]
 
 const appScreens = [
   {
-    kicker: 'Swing Lab',
-    title: 'Review every swing in detail.',
-    lead: 'See exit velocity, launch angle, carry, direction, and more the moment the ball leaves the bat.',
+    title: 'Head to Head',
+    lead: 'Pick your teams and go to war. Nothing prepares you for the pressure of game day like hitting in real situations with your team counting on you. Match field size to players for the ultimate pee wee to pro fun.',
+    image: '/assets/showcase-game.webp',
+    alt: 'Drop N Launch Head to Head game with stadium view, scoreboard, and live swing metrics',
+  },
+  {
+    title: 'Home Run Derby',
+    lead: 'A Drop N Launch favorite for 1-4 players. Match field size to players and swing for glory.',
+    image: '/assets/showcase-field.webp',
+    alt: 'Drop N Launch Home Run Derby with stadium ball flight and live hitting metrics',
+  },
+  {
+    title: 'Batting Practice',
+    lead: "BP mode offers the perfect mix of feedback, engagement and training efficiency. Select your field size and hit 'em where they ain't.",
+    image: '/assets/showcase-field.webp',
+    alt: 'Drop N Launch Batting Practice tracking a swing on the field with stadium ball flight view',
+  },
+  {
+    title: 'Swing Lab',
+    lead: 'Record your swings for video analysis. Study that PR cut like your life depends on it and share your swing sessions with any number of coaches.',
     image: '/assets/showcase-cage.webp',
     alt: 'Drop N Launch Swing Lab overlay tracking a swing in the batting cage',
-  },
-  {
-    kicker: 'On the field',
-    title: 'Train with real game feedback.',
-    lead: 'Capture live metrics and virtual ball flight wherever you hit — cage, garage, or open field.',
-    image: '/assets/showcase-field.webp',
-    alt: 'Drop N Launch tracking a swing on the field with stadium ball flight view',
-  },
-  {
-    kicker: 'Head to head',
-    title: 'Play against other hitters.',
-    lead: 'Challenge friends or rivals in competitive matchups and see who comes out on top.',
-    image: '/assets/showcase-game.webp',
-    alt: 'Drop N Launch game mode with stadium view, scoreboard, and live swing metrics',
   },
 ]
 
@@ -202,6 +202,37 @@ const leaderboardPreview = [
 ]
 
 const leaderboardsUrl = 'https://leaderboards.dropnlaunch.com/leaderboards'
+
+const coachPortalDash = {
+  team: 'Hawks 16U',
+  range: 'Last 14 days',
+  kpis: [
+    { label: 'Avg EV', value: '81', unit: 'mph' },
+    { label: 'Swings', value: '1,246', unit: '' },
+    { label: 'Sessions', value: '18', unit: '' },
+  ],
+  contact: [
+    { label: 'Hard', pct: 46 },
+    { label: 'Med', pct: 33 },
+    { label: 'Weak', pct: 21 },
+  ],
+  roster: [
+    { name: 'J. Reyes', ev: '88', la: '18°', swings: '42' },
+    { name: 'M. Chen', ev: '84', la: '22°', swings: '38' },
+    { name: 'A. Brooks', ev: '79', la: '16°', swings: '51' },
+  ],
+}
+
+const endorsement = {
+  name: 'Jessica Mendoza',
+  credentials: [
+    'Olympic Gold & Silver Medalist',
+    'ESPN MLB Analyst',
+    'Baseball Mom',
+  ],
+  quote:
+    "When my son's team started using Drop N Launch I watched the quality of batting practice spike immediately. I then watched first hand as the improved practice quality translated directly to more hits and fewer strikeouts. I love that Drop N Launch has made a pro quality tool available to players at every level.",
+}
 
 const screenIndex = ref(0)
 
@@ -242,9 +273,9 @@ function preloadShowcaseImages() {
         <div class="hero-content">
           <p class="hero-eyebrow">Ignore the bunt sign</p>
           <p id="hero-brand" class="hero-brand">Drop N Launch</p>
-          <h1 class="hero-title">Start training with real swing data</h1>
+          <h1 class="hero-title">Data<br>Drives<br>Development</h1>
           <p class="hero-lead">
-            Turn batting practice into measurable, competitive reps — real swing data anywhere you
+            Turn batting practice into measurable, competitive reps - real swing data anywhere you
             train.
           </p>
           <StoreBadges class="hero-cta" />
@@ -264,6 +295,56 @@ function preloadShowcaseImages() {
             </div>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <section class="section endorsements" aria-labelledby="endorsements-title">
+      <div class="wrap endorsements-inner reveal">
+        <div class="endorsements-photos">
+          <figure class="endorse-photo endorse-photo-main">
+            <img
+              src="/assets/jessica-mendoza-medals.jpg"
+              alt="Jessica Mendoza in a Team USA jersey holding Olympic gold and silver medals"
+              width="692"
+              height="1024"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <figure class="endorse-photo">
+            <img
+              src="/assets/jessica-mendoza-espn.png"
+              alt="Jessica Mendoza on a baseball field holding an ESPN microphone"
+              width="525"
+              height="350"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <figure class="endorse-photo">
+            <img
+              src="/assets/jessica-mendoza-field.jpg"
+              alt="Jessica Mendoza celebrating on a baseball field with her son and a coach"
+              width="1024"
+              height="682"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </div>
+
+        <div class="endorse-copy">
+          <h2 id="endorsements-title" class="section-kicker">Endorsements</h2>
+          <blockquote class="endorse-quote">
+            <p class="endorse-text">{{ endorsement.quote }}</p>
+            <footer class="endorse-person">
+              <cite class="endorse-name">{{ endorsement.name }}</cite>
+              <p class="endorse-creds">
+                <span v-for="item in endorsement.credentials" :key="item">{{ item }}</span>
+              </p>
+            </footer>
+          </blockquote>
+        </div>
       </div>
     </section>
 
@@ -321,7 +402,7 @@ function preloadShowcaseImages() {
       <div class="wrap showcase-head reveal">
         <Transition name="showcase-fade" mode="out-in">
           <div :key="screenIndex" class="showcase-copy">
-            <p class="section-kicker">{{ activeScreen.kicker }}</p>
+            <p class="section-kicker">Play modes</p>
             <h2 id="showcase-title" class="section-title showcase-title">
               {{ activeScreen.title }}
             </h2>
@@ -340,12 +421,12 @@ function preloadShowcaseImages() {
           <ChevronLeft :size="28" :stroke-width="2.25" aria-hidden="true" />
         </button>
 
-        <div class="showcase-phone" :aria-label="`App screen: ${activeScreen.kicker}`">
+        <div class="showcase-phone" :aria-label="`App screen: ${activeScreen.title}`">
           <div class="showcase-shell">
             <div class="showcase-screen">
               <img
                 v-for="(screen, index) in appScreens"
-                :key="screen.kicker"
+                :key="screen.title"
                 class="showcase-image"
                 :class="{ 'is-active': index === screenIndex }"
                 :src="screen.image"
@@ -375,7 +456,7 @@ function preloadShowcaseImages() {
       <div class="wrap showcase-dots reveal" role="tablist" aria-label="App screens">
         <button
           v-for="(screen, index) in appScreens"
-          :key="screen.kicker"
+          :key="screen.title"
           type="button"
           class="showcase-dot"
           :class="{ 'is-active': index === screenIndex }"
@@ -394,7 +475,7 @@ function preloadShowcaseImages() {
           Track swing data anywhere you train.
         </h2>
         <p class="section-lead">
-          Bring Drop N Launch to the field, garage, or cage — real swing metrics wherever you hit.
+          Drop N Launch goes where you go. Take it to the field, the garage, the backyard or the driveway. Hit from a tee, a machine, or a live arm.
         </p>
 
         <div class="places-grid">
@@ -409,7 +490,6 @@ function preloadShowcaseImages() {
             </figure>
             <h3>{{ place.title }}</h3>
             <p>{{ place.copy }}</p>
-            <RouterLink class="place-setup" :to="place.setupTo">Get started →</RouterLink>
           </article>
         </div>
       </div>
@@ -418,12 +498,12 @@ function preloadShowcaseImages() {
     <section class="section leaderboards" aria-labelledby="leaderboards-title">
       <div class="wrap leaderboards-inner reveal">
         <div class="leaderboards-copy">
-          <p class="section-kicker">Leaderboards</p>
+          <p class="section-kicker">The Leaderboard</p>
           <h2 id="leaderboards-title" class="section-title leaderboards-title">
             Climb the ranks.
           </h2>
           <p class="section-lead">
-            Compete against users all across the world. See where you stack up — then beat it.
+            See how you stack up - then get to work.
           </p>
           <a
             class="button button-primary leaderboards-cta"
@@ -474,6 +554,112 @@ function preloadShowcaseImages() {
       </div>
     </section>
 
+    <section class="section coach-portal" aria-labelledby="coach-portal-title">
+      <div class="wrap coach-portal-inner reveal">
+        <div class="coach-portal-copy">
+          <p class="section-kicker">Coach Portal</p>
+          <h2 id="coach-portal-title" class="section-title coach-portal-title">
+            Data for coaches to measure.
+          </h2>
+          <p class="section-lead">
+            Using our Coach Portal feature, players can authorize coaches, instructors, teammates
+            and friends to review their data and analyze their swing videos.
+          </p>
+          <p class="section-lead">
+            Upload Swing Lab session data directly to player profiles from any authorized device.
+          </p>
+        </div>
+
+        <figure class="coach-laptop" aria-label="Coach Portal laptop showing Hawks 16U team metrics and charts">
+          <div class="coach-laptop-lid">
+            <div class="coach-laptop-camera" aria-hidden="true"></div>
+            <div class="coach-laptop-screen">
+              <div class="dash">
+                <header class="dash-head">
+                  <div>
+                    <p class="dash-kicker">Coach Portal</p>
+                    <p class="dash-team">{{ coachPortalDash.team }}</p>
+                  </div>
+                  <p class="dash-range">{{ coachPortalDash.range }}</p>
+                </header>
+
+                <div class="dash-kpis">
+                  <div v-for="kpi in coachPortalDash.kpis" :key="kpi.label" class="dash-kpi">
+                    <p class="dash-kpi-label">{{ kpi.label }}</p>
+                    <p class="dash-kpi-value">
+                      {{ kpi.value }}<small v-if="kpi.unit">{{ kpi.unit }}</small>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="dash-charts">
+                  <div class="dash-card">
+                    <p class="dash-card-label">Contact mix</p>
+                    <div class="dash-donut-row">
+                      <div class="dash-donut" aria-hidden="true"></div>
+                      <ul class="dash-legend">
+                        <li v-for="slice in coachPortalDash.contact" :key="slice.label">
+                          <span>{{ slice.label }}</span>
+                          <strong>{{ slice.pct }}%</strong>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="dash-card">
+                    <p class="dash-card-label">Team EV trend</p>
+                    <svg class="dash-line" viewBox="0 0 160 64" preserveAspectRatio="none" aria-hidden="true">
+                      <defs>
+                        <linearGradient id="coachEvFill" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stop-color="#76ce00" stop-opacity="0.35" />
+                          <stop offset="100%" stop-color="#76ce00" stop-opacity="0" />
+                        </linearGradient>
+                      </defs>
+                      <path
+                        d="M8 64 L8 46 L30 40 L52 42 L74 32 L96 28 L118 34 L140 18 L152 14 L152 64 Z"
+                        fill="url(#coachEvFill)"
+                      />
+                      <polyline
+                        points="8,46 30,40 52,42 74,32 96,28 118,34 140,18 152,14"
+                        fill="none"
+                        stroke="#76ce00"
+                        stroke-width="2.2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <circle cx="152" cy="14" r="2.6" fill="#76ce00" />
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="dash-roster">
+                  <div class="dash-roster-head">
+                    <span>Player</span>
+                    <span>EV</span>
+                    <span>LA</span>
+                    <span>Swings</span>
+                  </div>
+                  <div
+                    v-for="player in coachPortalDash.roster"
+                    :key="player.name"
+                    class="dash-roster-row"
+                  >
+                    <span>{{ player.name }}</span>
+                    <span>{{ player.ev }}</span>
+                    <span>{{ player.la }}</span>
+                    <span>{{ player.swings }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="coach-laptop-base" aria-hidden="true">
+            <div class="coach-laptop-notch"></div>
+          </div>
+        </figure>
+      </div>
+    </section>
+
     <section id="download" class="section start" aria-labelledby="start-title">
       <div class="wrap start-inner reveal">
         <div>
@@ -487,8 +673,8 @@ function preloadShowcaseImages() {
           </p>
         </div>
         <div class="start-actions">
+          <RouterLink class="button button-primary start-cta" to="/get-started">Get Started</RouterLink>
           <StoreBadges class="start-badges" />
-          <RouterLink class="start-setup" to="/get-started">Getting Started Guide</RouterLink>
         </div>
         <img
           class="start-logo"
@@ -655,6 +841,112 @@ function preloadShowcaseImages() {
   background: rgba(255, 255, 255, 0.55);
 }
 
+.endorsements {
+  position: relative;
+  z-index: 1;
+  background: var(--soft);
+  padding-top: clamp(6.25rem, 11vw, 8.25rem);
+  padding-bottom: clamp(4.5rem, 9vw, 6.5rem);
+}
+
+.endorsements-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(2rem, 5vw, 4.25rem);
+  align-items: center;
+}
+
+.endorsements-photos {
+  display: grid;
+  grid-template-columns: 1.12fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.65rem;
+  min-height: clamp(22rem, 42vw, 30rem);
+}
+
+.endorse-photo {
+  margin: 0;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--green-soft);
+  border: 1px solid var(--line);
+}
+
+.endorse-photo-main {
+  grid-row: 1 / -1;
+}
+
+.endorse-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.endorse-photo-main img {
+  object-position: center 12%;
+}
+
+.endorse-photo:nth-child(2) img {
+  object-position: center 18%;
+}
+
+.endorse-photo:nth-child(3) img {
+  object-position: center 28%;
+}
+
+.endorse-quote {
+  margin: 0;
+}
+
+.endorse-text {
+  position: relative;
+  max-width: 34rem;
+  color: var(--ink);
+  font-size: clamp(1.08rem, 1.7vw, 1.22rem);
+  line-height: 1.62;
+  text-wrap: pretty;
+}
+
+.endorse-text::before {
+  content: "“";
+}
+
+.endorse-text::after {
+  content: "”";
+}
+
+.endorse-person {
+  margin-top: 1.6rem;
+}
+
+.endorse-name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.55rem);
+  font-style: normal;
+  letter-spacing: 0.03em;
+  line-height: 0.95;
+}
+
+.endorse-creds {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.55rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.endorse-creds span:not(:last-child)::after {
+  content: "/";
+  margin: 0 0.55rem;
+  color: var(--line);
+  font-weight: 500;
+}
+
 .stats {
   position: relative;
   z-index: 1;
@@ -785,7 +1077,7 @@ function preloadShowcaseImages() {
 .showcase-head {
   position: relative;
   text-align: center;
-  min-height: clamp(11.5rem, 24vw, 14.5rem);
+  min-height: clamp(14rem, 30vw, 18.5rem);
 }
 
 .showcase-copy {
@@ -802,7 +1094,7 @@ function preloadShowcaseImages() {
 }
 
 .showcase-title {
-  max-width: 14ch;
+  max-width: 12ch;
   margin-inline: auto;
 }
 
@@ -1079,6 +1371,302 @@ function preloadShowcaseImages() {
   background: rgba(118, 206, 0, 0.06);
 }
 
+.coach-portal {
+  background: var(--paper);
+}
+
+.coach-portal-title {
+  max-width: 12ch;
+}
+
+.coach-portal-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: center;
+}
+
+.coach-portal-copy .section-lead + .section-lead {
+  margin-top: 0.85rem;
+}
+
+.coach-laptop {
+  margin: 0;
+  width: 100%;
+  container-type: inline-size;
+  container-name: coach-laptop;
+  filter: drop-shadow(0 28px 40px rgba(8, 14, 10, 0.22));
+}
+
+.coach-laptop-lid {
+  position: relative;
+  padding: 1.7cqi 1.35cqi 1.15cqi;
+  border-radius: 1.5cqi 1.5cqi 0.35cqi 0.35cqi;
+  background:
+    linear-gradient(180deg, #2a2e2c 0%, #161a18 72%, #101412 100%);
+}
+
+.coach-laptop-camera {
+  position: absolute;
+  top: 0.55cqi;
+  left: 50%;
+  width: 0.7cqi;
+  height: 0.7cqi;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #0a0c0b;
+  box-shadow: inset 0 0 0 0.18cqi #3a403c;
+}
+
+.coach-laptop-screen {
+  overflow: hidden;
+  border-radius: 0.35cqi;
+  background: #101612;
+  aspect-ratio: 16 / 10.4;
+}
+
+.coach-laptop-base {
+  width: 118%;
+  height: 1.35cqi;
+  margin-inline: -9%;
+  border-radius: 0 0 1.4cqi 1.4cqi;
+  background:
+    linear-gradient(180deg, #8b918c 0%, #5c615d 38%, #3a3e3b 100%);
+  box-shadow: 0 0.4cqi 0 #2a2e2b;
+}
+
+.coach-laptop-notch {
+  width: 16%;
+  height: 0.55cqi;
+  margin: 0 auto;
+  border-radius: 0 0 0.7cqi 0.7cqi;
+  background: #1b1f1d;
+}
+
+.dash {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  gap: 2.1cqi;
+  padding: 2.6cqi 2.8cqi 2.4cqi;
+  color: #edf3ea;
+  font-size: 2.15cqi;
+}
+
+.dash-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.2cqi;
+}
+
+.dash-kicker {
+  margin: 0;
+  color: #76ce00;
+  font-size: 1.7cqi;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.dash-team {
+  margin: 0.15cqi 0 0;
+  font-family: var(--font-display);
+  font-size: 4.4cqi;
+  letter-spacing: 0.04em;
+  line-height: 0.9;
+}
+
+.dash-range {
+  margin: 0;
+  color: rgba(237, 243, 234, 0.52);
+  font-size: 1.7cqi;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.dash-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2cqi;
+}
+
+.dash-kpi {
+  padding: 1.2cqi 1.4cqi 1.3cqi;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.dash-kpi-label {
+  margin: 0;
+  color: rgba(237, 243, 234, 0.5);
+  font-size: 1.55cqi;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dash-kpi-value {
+  margin: 0.35cqi 0 0;
+  font-family: var(--font-display);
+  font-size: 3.8cqi;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  color: #76ce00;
+}
+
+.dash-kpi-value small {
+  margin-left: 0.35cqi;
+  font-family: var(--font-body);
+  font-size: 1.45cqi;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(237, 243, 234, 0.5);
+}
+
+.dash-charts {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 1.2cqi;
+  min-height: 0;
+}
+
+.dash-card {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 1cqi;
+  padding: 1.4cqi 1.5cqi 1.3cqi;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+}
+
+.dash-line {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: block;
+}
+
+.dash-card-label {
+  margin: 0;
+  color: rgba(237, 243, 234, 0.55);
+  font-size: 1.55cqi;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dash-donut-row {
+  display: flex;
+  align-items: stretch;
+  gap: 1.2cqi;
+  min-height: 0;
+  min-width: 0;
+  height: 100%;
+}
+
+.dash-donut {
+  position: relative;
+  flex: 0 0 auto;
+  height: auto;
+  width: auto;
+  aspect-ratio: 1;
+  max-width: 46%;
+  border-radius: 50%;
+  background: conic-gradient(#76ce00 0 46%, #2ea8e5 46% 79%, #ff4d2e 79% 100%);
+}
+
+.dash-donut::after {
+  content: "";
+  position: absolute;
+  inset: 23%;
+  border-radius: 50%;
+  background: #151c18;
+}
+
+.dash-legend {
+  display: grid;
+  gap: 0.25cqi;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-height: 100%;
+  align-content: center;
+  overflow: hidden;
+}
+
+.dash-legend li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1cqi;
+  color: rgba(237, 243, 234, 0.72);
+  line-height: 1.15;
+}
+
+.dash-legend li:nth-child(1) span::before { background: #76ce00; }
+.dash-legend li:nth-child(2) span::before { background: #2ea8e5; }
+.dash-legend li:nth-child(3) span::before { background: #ff4d2e; }
+
+.dash-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55cqi;
+}
+
+.dash-legend span::before {
+  content: "";
+  width: 1.15cqi;
+  height: 1.15cqi;
+  border-radius: 50%;
+}
+
+.dash-legend strong {
+  font-size: 1.9cqi;
+  font-weight: 700;
+  color: #edf3ea;
+}
+
+.dash-roster {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.dash-roster-head,
+.dash-roster-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) 0.7fr 0.7fr 0.8fr;
+  gap: 0.8cqi;
+  padding: 0.85cqi 1.4cqi;
+}
+
+.dash-roster-head {
+  color: rgba(237, 243, 234, 0.45);
+  font-size: 1.45cqi;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dash-roster-row {
+  font-size: 2cqi;
+  font-weight: 600;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dash-roster-row span:nth-child(2) {
+  color: #76ce00;
+  font-family: var(--font-display);
+  font-size: 2.4cqi;
+  letter-spacing: 0.03em;
+}
+
 .places-title {
   max-width: 14ch;
 }
@@ -1098,21 +1686,6 @@ function preloadShowcaseImages() {
 .place p {
   margin-top: 0.45rem;
   color: var(--muted);
-}
-
-.place-setup {
-  display: inline-block;
-  margin-top: 0.85rem;
-  color: var(--green-deep);
-  font-size: 0.92rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  transition: color 160ms ease, transform 160ms ease;
-}
-
-.place-setup:hover {
-  color: var(--ink);
-  transform: translateX(2px);
 }
 
 .place-image {
@@ -1179,17 +1752,8 @@ function preloadShowcaseImages() {
   height: 3.25rem;
 }
 
-.start-setup {
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--muted);
-  text-decoration: underline;
-  text-underline-offset: 0.18em;
-  transition: color 160ms ease;
-}
-
-.start-setup:hover {
-  color: var(--green-deep);
+.start-cta {
+  min-width: 12.5rem;
 }
 
 @keyframes hero-rise {
@@ -1255,8 +1819,24 @@ function preloadShowcaseImages() {
     margin-bottom: -4.25rem;
   }
 
-  .leaderboards-inner {
+  .endorsements-inner {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .endorsements-photos {
+    min-height: 22rem;
+    max-width: 36rem;
+  }
+
+  .leaderboards-inner,
+  .coach-portal-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .coach-laptop {
+    width: min(100%, 36rem);
+    margin-inline: auto;
   }
 
   .stats-head {
@@ -1293,6 +1873,15 @@ function preloadShowcaseImages() {
 @media (max-width: 640px) {
   .phone-float {
     display: none;
+  }
+
+  .endorsements {
+    padding-top: clamp(3.5rem, 8vw, 5rem);
+  }
+
+  .endorsements-photos {
+    min-height: 17.5rem;
+    max-width: none;
   }
 
   .showcase-stage {

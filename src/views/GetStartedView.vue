@@ -9,40 +9,54 @@ const needs = [
   },
   {
     title: 'Garmin Approach R10',
-    copy:
-      'Pair your Garmin Approach R10 Launch monitor to your iOS or Android device running the Drop N Launch app.',
+    copy: 'Purchase your Garmin Approach R10.',
     garmin: true,
   },
   {
-    title: 'Space to hit',
+    title: 'Tripod',
     copy:
-      'Set the monitor 6-8 feet behind the hitter and leave at least 8 feet in front for ball flight.',
+      'We recommend a light, and easily adjustable cell phone tripod like this one to hold your launch monitor. We recommend using a second tripod to hold your iOS or Android device while hitting.',
   },
   {
-    title: 'Your hitting setup',
-    copy:
-      'Use a tee, pitching machine, live arm, net, impact screen, cage, garage, or open field.',
+    title: 'Space to Hit',
+    copy: 'All you need is 14 feet.',
   },
 ]
 
-const setups = [
+const setupSteps = [
   {
-    id: 'setup-garage',
-    title: 'Garage setup',
-    copy: 'Great for indoor or backyard training where you have limited swing space and a net setup.',
-    videoId: 'af_aDsnYxP8',
+    title: 'Open the Drop N Launch App',
   },
   {
-    id: 'setup-cage',
-    title: 'Cage setup',
-    copy: 'Best for live arm, machine, or cage training where ball return and rebound are available.',
-    videoId: '4P8w1tH8lWE',
+    title: 'Power on the Garmin Approach R10 Monitor.',
+    copy:
+      'The front light will blink blue to indicate pairing mode. If not blinking blue, hold the power button until the light turns blue.',
   },
   {
-    id: 'setup-field',
-    title: 'Field setup',
-    copy: 'Use this for open-field sessions focused on long-flight tracking and outdoor training flow.',
-    videoId: 'dxg60MYsQb4',
+    title: 'Accept the pairing notification on your mobile device.',
+  },
+  {
+    title: 'Place the monitor in a tripod and locate 6-8 feet behind the hitter.',
+    copy: 'Ensure that there is 8 feet in front of the hitter for ball flight.',
+  },
+  {
+    title: 'Adjust height to just below the hitter’s waist.',
+    copy: 'This height is ideal but perfection is not required.',
+  },
+  {
+    title: 'Set the tilt angle of the monitor to approximately 20 degrees.',
+    copy:
+      'For angle reference you can attach the monitor to the mini tripod that came with the unit.',
+  },
+  {
+    title: 'Navigate to settings and select “Edit Profile” to complete profile.',
+    copy: 'Select “Make My Profile Public” for placement on the Leaderboard.',
+  },
+  {
+    title: 'Select a game mode.',
+  },
+  {
+    title: 'Play. Train. Improve.',
   },
 ]
 
@@ -53,32 +67,16 @@ const garminUrl = 'https://www.garmin.com/en-US/p/695391'
 
 <template>
   <div>
-    <section class="section page-hero" aria-labelledby="gs-title">
-      <div class="wrap">
-        <p class="section-kicker">Get started</p>
-        <h1 id="gs-title" class="section-title">Everything you need to start tracking swings</h1>
-        <p class="section-lead">
-          Drop N Launch connects your mobile device to the Garmin Approach R10 so players can
-          capture exit velocity, launch angle, direction, distance, and swing video anywhere they
-          train.
-        </p>
-        <StoreBadges class="hero-stores" />
-      </div>
-    </section>
-
     <section class="section needs" aria-labelledby="needs-title">
       <div class="wrap">
-        <p class="section-kicker">Before your first swing</p>
-        <h2 id="needs-title" class="section-title">What you need</h2>
-        <p class="section-lead">
-          Start with these basics, then choose the setup guide that matches where you train.
-        </p>
+        <p class="section-kicker">Get started</p>
+        <h1 id="needs-title" class="section-title">What you need</h1>
 
-        <ol class="need-list">
+        <ol class="step-list">
           <li v-for="(item, index) in needs" :key="item.title">
-            <span class="need-num">{{ String(index + 1).padStart(2, '0') }}</span>
+            <span class="step-num">{{ String(index + 1).padStart(2, '0') }}</span>
             <div>
-              <h3>{{ item.title }}</h3>
+              <h2>{{ item.title }}</h2>
               <p>{{ item.copy }}</p>
               <StoreBadges v-if="item.stores" class="need-stores" />
               <a
@@ -90,6 +88,22 @@ const garminUrl = 'https://www.garmin.com/en-US/p/695391'
               >
                 View Garmin R10
               </a>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section setup-steps" aria-labelledby="setup-title">
+      <div class="wrap">
+        <h2 id="setup-title" class="section-title">The Setup</h2>
+
+        <ol class="step-list">
+          <li v-for="(item, index) in setupSteps" :key="item.title">
+            <span class="step-num">{{ String(index + 1).padStart(2, '0') }}</span>
+            <div>
+              <h3>{{ item.title }}</h3>
+              <p v-if="item.copy">{{ item.copy }}</p>
             </div>
           </li>
         </ol>
@@ -126,30 +140,6 @@ const garminUrl = 'https://www.garmin.com/en-US/p/695391'
       </div>
     </section>
 
-    <section id="setups" class="section setups" aria-labelledby="setups-title">
-      <div class="wrap">
-        <p class="section-kicker">Choose your space</p>
-        <h2 id="setups-title" class="section-title">Setup guides</h2>
-        <p class="section-lead">Use the guide that matches your training environment.</p>
-
-        <div class="setup-grid">
-          <article v-for="setup in setups" :id="setup.id" :key="setup.id" class="setup">
-            <h3>{{ setup.title }}</h3>
-            <p>{{ setup.copy }}</p>
-            <div class="video-frame setup-video-embed" :aria-label="`${setup.title} video`">
-              <iframe
-                :src="`https://www.youtube.com/embed/${setup.videoId}`"
-                :title="setup.title"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="section support" aria-labelledby="support-title">
       <div class="wrap support-inner">
         <div>
@@ -167,28 +157,20 @@ const garminUrl = 'https://www.garmin.com/en-US/p/695391'
 </template>
 
 <style scoped>
-.page-hero {
+.needs {
   padding-top: calc(var(--header-h) + 3.5rem);
   background:
     radial-gradient(circle at 80% 20%, rgba(118, 206, 0, 0.18), transparent 34%),
     linear-gradient(180deg, var(--soft), var(--paper));
 }
 
-.hero-stores {
-  margin-top: 1.75rem;
-}
-
-.needs {
-  background: var(--paper);
-}
-
-.need-list {
+.step-list {
   list-style: none;
   margin: 2.5rem 0 0;
   padding: 0;
 }
 
-.need-list li {
+.step-list li {
   display: grid;
   grid-template-columns: 3.25rem 1fr;
   gap: 1rem;
@@ -196,23 +178,41 @@ const garminUrl = 'https://www.garmin.com/en-US/p/695391'
   border-top: 1px solid var(--line);
 }
 
-.need-list li:last-child {
+.step-list li:last-child {
   border-bottom: 1px solid var(--line);
 }
 
-.need-num {
+.step-num {
   font-family: var(--font-display);
   font-size: 1.6rem;
   color: var(--green-deep);
 }
 
-.need-list h3 {
+.step-list h2,
+.step-list h3 {
   font-size: 1.85rem;
   margin-bottom: 0.35rem;
 }
 
-.need-list p {
+.setup-steps .step-list h3 {
+  max-width: 38rem;
+  font-family: var(--font-body);
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+
+.step-list p {
   color: var(--muted);
+}
+
+.setup-steps {
+  background: var(--paper);
+}
+
+.setup-steps .step-list p {
+  max-width: 38rem;
 }
 
 .need-stores {
@@ -257,34 +257,6 @@ const garminUrl = 'https://www.garmin.com/en-US/p/695391'
   border: 0;
 }
 
-.setups {
-  background: var(--paper);
-}
-
-.setup-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 2.5rem;
-}
-
-.setup h3 {
-  font-size: 2rem;
-}
-
-.setup {
-  scroll-margin-top: calc(var(--header-h) + 2.5rem);
-}
-
-.setup > p {
-  margin: 0.45rem 0 1rem;
-  color: var(--muted);
-}
-
-.setup-video-embed {
-  margin-top: 0.25rem;
-}
-
 .support {
   background: linear-gradient(120deg, var(--green-soft), #dff3ff 70%);
 }
@@ -298,8 +270,7 @@ const garminUrl = 'https://www.garmin.com/en-US/p/695391'
 }
 
 @media (max-width: 900px) {
-  .setup-video-layout,
-  .setup-grid {
+  .setup-video-layout {
     grid-template-columns: 1fr;
   }
 }

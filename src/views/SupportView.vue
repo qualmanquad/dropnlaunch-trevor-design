@@ -1,25 +1,3 @@
-<script setup>
-const topics = [
-  {
-    title: 'Email Support',
-    copy:
-      'Send questions or support requests to support@dropnlaunch.com.',
-    href: 'mailto:support@dropnlaunch.com',
-    linkLabel: 'support@dropnlaunch.com',
-  },
-  {
-    title: 'Setup and Training',
-    copy:
-      'From Garmin R10 pairing to camera placement, we can walk you through your first session setup.',
-  },
-  {
-    title: 'Account and Billing',
-    copy:
-      'Questions about subscription status, purchases, or app access can be handled directly with support.',
-  },
-]
-</script>
-
 <template>
   <section class="section support-page" aria-labelledby="support-title">
     <div class="wrap">
@@ -30,19 +8,43 @@ const topics = [
         will get back to you.
       </p>
 
-      <ol class="support-list">
-        <li v-for="(topic, index) in topics" :key="topic.title">
-          <span class="support-num">{{ String(index + 1).padStart(2, '0') }}</span>
-          <div>
-            <h2>{{ topic.title }}</h2>
-            <p v-if="topic.href">
-              Send questions or support requests to
-              <a :href="topic.href">{{ topic.linkLabel }}</a>.
-            </p>
-            <p v-else>{{ topic.copy }}</p>
-          </div>
-        </li>
-      </ol>
+      <div class="support-email">
+        <h2>Email Support</h2>
+        <p>
+          Send questions or support requests to
+          <a href="mailto:support@dropnlaunch.com">support@dropnlaunch.com</a>.
+        </p>
+      </div>
+
+      <div class="pro-tips" aria-labelledby="pro-tips-title">
+        <h2 id="pro-tips-title">Pro Tips</h2>
+        <ul class="tip-list">
+          <li>Start the pitch or swing when the front light is green.</li>
+          <li>
+            Once the device senses movement the front light will turn red and there is only a small
+            window to complete your swing. Limit excessive movement in the hitting zone prior to
+            beginning the swing.
+          </li>
+          <li>If the front light locks on red or white, restart the monitor.</li>
+          <li>
+            If your system is failing to read:
+            <ol class="tip-steps">
+              <li>
+                First, confirm that the monitor is the correct distance from the hitting zone, that
+                the ball has 8 feet to travel, and that the angle of the monitor matches
+                specifications.
+              </li>
+              <li>
+                If you are still experiencing failed readings, confirm that the monitor is paired by
+                clicking the menu button from within a training mode, or by clicking settings from
+                the Dashboard.
+              </li>
+              <li>If the monitor is paired and not reading, restart the monitor.</li>
+              <li>If failures persist, reboot Drop N Launch App.</li>
+            </ol>
+          </li>
+        </ul>
+      </div>
 
       <p class="support-note">
         Looking to delete your account?
@@ -58,45 +60,52 @@ const topics = [
   background: linear-gradient(180deg, var(--soft), var(--paper));
 }
 
-.support-list {
-  list-style: none;
-  margin: 2.5rem 0 0;
-  padding: 0;
-}
-
-.support-list li {
-  display: grid;
-  grid-template-columns: 3.25rem 1fr;
-  gap: 1rem;
+.support-email,
+.pro-tips {
+  margin-top: 2.5rem;
   padding: 1.35rem 0;
   border-top: 1px solid var(--line);
 }
 
-.support-list li:last-child {
+.pro-tips {
   border-bottom: 1px solid var(--line);
 }
 
-.support-num {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  color: var(--green-deep);
-}
-
-.support-list h2 {
+.support-email h2,
+.pro-tips h2 {
   font-size: 1.85rem;
   margin-bottom: 0.35rem;
 }
 
-.support-list p,
+.support-email p,
+.pro-tips li,
 .support-note {
   color: var(--muted);
 }
 
-.support-list a,
+.support-email a,
 .support-note a {
   color: var(--green-deep);
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+.tip-list,
+.tip-steps {
+  margin: 0.85rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.tip-list > li + li {
+  margin-top: 0.75rem;
+}
+
+.tip-steps {
+  margin-top: 0.65rem;
+}
+
+.tip-steps li + li {
+  margin-top: 0.45rem;
 }
 
 .support-note {
