@@ -10,6 +10,7 @@ import {
   MapPin,
   MoveUpRight,
   RotateCw,
+  Star,
   Video,
   Zap,
 } from '@lucide/vue'
@@ -234,6 +235,27 @@ const endorsement = {
     "When my son's team started using Drop N Launch I watched the quality of batting practice spike immediately. I then watched first hand as the improved practice quality translated directly to more hits and fewer strikeouts. I love that Drop N Launch has made a pro quality tool available to players at every level.",
 }
 
+const reviews = [
+  {
+    title: '10/10 Recommend',
+    quote:
+      "My husband and son have been hooked ever since we downloaded the app. They've practiced in the garage everyday since and have had a bunch of fun especially with the HomeRun Derby. We've especially loved the convenience of being able to practice at home. 10/10 recommend.",
+    name: 'ChrisH013',
+  },
+  {
+    title: 'Great for Kids and Adults',
+    quote:
+      "Kids absolutely love this, it's a blast! Fun realistic gameplay and different field for all ages. Perfect for keeping them active and having a great time.",
+    name: 'Gammer24325',
+  },
+  {
+    title: 'A must have for every coach',
+    quote:
+      "I'm a club coach and hitting instructor. Drop N Launch completely changed BP for my teams, and it translated directly to the field. Engagement is the key to effective training. Drop N Launch drives engagement with competitive game modes and the ability to track progress over time. Drop N Launch is a must have for every coach and hitting instructor.",
+    name: 'M Jackson',
+  },
+]
+
 const screenIndex = ref(0)
 
 const activeScreen = computed(() => appScreens[screenIndex.value])
@@ -345,6 +367,24 @@ function preloadShowcaseImages() {
             </footer>
           </blockquote>
         </div>
+      </div>
+
+      <div class="wrap review-row reveal" aria-label="5 star reviews">
+        <article v-for="review in reviews" :key="review.name" class="review-card">
+          <p class="review-stars" aria-label="5 out of 5 stars">
+            <Star
+              v-for="star in 5"
+              :key="star"
+              :size="15"
+              :stroke-width="2.25"
+              fill="currentColor"
+              aria-hidden="true"
+            />
+          </p>
+          <h3 class="review-title">{{ review.title }}</h3>
+          <p class="review-quote">{{ review.quote }}</p>
+          <p class="review-meta">{{ review.name }}</p>
+        </article>
       </div>
     </section>
 
@@ -945,6 +985,51 @@ function preloadShowcaseImages() {
   margin: 0 0.55rem;
   color: var(--line);
   font-weight: 500;
+}
+
+.review-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: clamp(2.75rem, 5vw, 4rem);
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 1.2rem 1.25rem 1.1rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.review-stars {
+  display: flex;
+  gap: 0.12rem;
+  margin: 0;
+  color: #f5b400;
+}
+
+.review-title {
+  margin-top: 0.7rem;
+  font-size: clamp(1.45rem, 2vw, 1.7rem);
+  line-height: 0.95;
+}
+
+.review-quote {
+  margin-top: 0.7rem;
+  color: var(--ink);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.review-meta {
+  margin-top: auto;
+  padding-top: 1.15rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
 }
 
 .stats {
@@ -1827,6 +1912,10 @@ function preloadShowcaseImages() {
   .endorsements-photos {
     min-height: 22rem;
     max-width: 36rem;
+  }
+
+  .review-row {
+    grid-template-columns: 1fr;
   }
 
   .leaderboards-inner,
